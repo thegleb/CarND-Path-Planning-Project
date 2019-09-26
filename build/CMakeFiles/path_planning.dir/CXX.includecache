@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/planner.cpp
+planner.hpp
+/Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/planner.hpp
+
+/Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/planner.hpp
+vector
+-
+map
+-
+stdio.h
+-
+
