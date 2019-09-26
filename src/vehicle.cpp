@@ -8,3 +8,8 @@
 
 #include "vehicle.hpp"
 
+Vehicle::Vehicle() {
+  state = "KL";
+}
+Vehicle::~Vehicle() {}
+

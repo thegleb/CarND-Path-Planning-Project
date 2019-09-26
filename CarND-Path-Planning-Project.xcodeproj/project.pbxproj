@@ -6,6 +6,16 @@
 	objectVersion = 50;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		F7F5632F233C7C8600394532 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F7F56329233C7C8600394532 /* Path_Planning.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9031BBCB022D42AF941995FA;
+			remoteInfo = path_planning;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		F7F55C18233B314900394532 /* set_git.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = set_git.sh; sourceTree = "<group>"; };
 		F7F55C19233B314900394532 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -1653,11 +1663,14 @@
 		F7F56318233B341600394532 /* CMakeDirectoryInformation.cmake */ = {isa = PBXFileReference; lastKnownFileType = text; path = CMakeDirectoryInformation.cmake; sourceTree = "<group>"; };
 		F7F56319233B341600394532 /* Makefile2 */ = {isa = PBXFileReference; lastKnownFileType = text; path = Makefile2; sourceTree = "<group>"; };
 		F7F5631A233B341600394532 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		F7F5631B233B341600394532 /* build.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = build.xcodeproj; sourceTree = "<group>"; };
 		F7F5631E233B341600394532 /* cmake_install.cmake */ = {isa = PBXFileReference; lastKnownFileType = text; path = cmake_install.cmake; sourceTree = "<group>"; };
 		F7F5631F233B341600394532 /* CMakeCache.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = CMakeCache.txt; sourceTree = "<group>"; };
 		F7F56321233B35B000394532 /* planner.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = planner.cpp; sourceTree = "<group>"; };
 		F7F56322233B35B000394532 /* planner.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = planner.hpp; sourceTree = "<group>"; };
+		F7F56325233C752400394532 /* vehicle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = vehicle.cpp; sourceTree = "<group>"; };
+		F7F56326233C752400394532 /* vehicle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = vehicle.hpp; sourceTree = "<group>"; };
+		F7F56328233C7AFC00394532 /* spline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spline.h; sourceTree = "<group>"; };
+		F7F56329233C7C8600394532 /* Path_Planning.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Path_Planning.xcodeproj; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -1680,11 +1693,14 @@
 		F7F55C1B233B314900394532 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				F7F56328233C7AFC00394532 /* spline.h */,
 				F7F55C1C233B314900394532 /* json.hpp */,
 				F7F55C1D233B314900394532 /* helpers.h */,
 				F7F55C1E233B314900394532 /* main.cpp */,
 				F7F56322233B35B000394532 /* planner.hpp */,
 				F7F56321233B35B000394532 /* planner.cpp */,
+				F7F56326233C752400394532 /* vehicle.hpp */,
+				F7F56325233C752400394532 /* vehicle.cpp */,
 				F7F55C1F233B314900394532 /* Eigen-3.3 */,
 			);
 			path = src;
@@ -4294,7 +4310,7 @@
 				F7F562F6233B341600394532 /* path_planning */,
 				F7F562F7233B341600394532 /* CMakeFiles */,
 				F7F5631A233B341600394532 /* Makefile */,
-				F7F5631B233B341600394532 /* build.xcodeproj */,
+				F7F56329233C7C8600394532 /* Path_Planning.xcodeproj */,
 				F7F5631E233B341600394532 /* cmake_install.cmake */,
 				F7F5631F233B341600394532 /* CMakeCache.txt */,
 			);
@@ -4398,9 +4414,10 @@
 			path = CMakeTmp;
 			sourceTree = "<group>";
 		};
-		F7F5631C233B341600394532 /* Products */ = {
+		F7F5632A233C7C8600394532 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				F7F56330233C7C8600394532 /* path_planning */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -4448,8 +4465,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = F7F5631C233B341600394532 /* Products */;
-					ProjectRef = F7F5631B233B341600394532 /* build.xcodeproj */;
+					ProductGroup = F7F5632A233C7C8600394532 /* Products */;
+					ProjectRef = F7F56329233C7C8600394532 /* Path_Planning.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -4458,6 +4475,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		F7F56330233C7C8600394532 /* path_planning */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = path_planning;
+			remoteRef = F7F5632F233C7C8600394532 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin XCBuildConfiguration section */
 		F7F55C13233B313200394532 /* Debug */ = {
@@ -4568,6 +4595,7 @@
 		F7F55C16233B313200394532 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEBUGGING_SYMBOLS = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -4583,6 +4611,7 @@
 		F7F55C17233B313200394532 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = GSUNJHG59Z;

@@ -8,6 +8,9 @@
 #include "helpers.h"
 #include "json.hpp"
 
+#include "vehicle.hpp"
+#include "planner.hpp"
+
 // for convenience
 using nlohmann::json;
 using std::string;
@@ -16,6 +19,10 @@ using std::vector;
 int main() {
   uWS::Hub h;
 
+  Vehicle car;
+  Planner planner;
+  planner.ego = car;
+  
   // Load up map values for waypoint's x,y,s and d normalized normal vectors
   vector<double> map_waypoints_x;
   vector<double> map_waypoints_y;
@@ -50,10 +57,13 @@ int main() {
     map_waypoints_dy.push_back(d_y);
   }
 
+
   h.onMessage([&map_waypoints_x,&map_waypoints_y,&map_waypoints_s,
-               &map_waypoints_dx,&map_waypoints_dy]
+               &map_waypoints_dx,&map_waypoints_dy,&car,&planner]
               (uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length,
                uWS::OpCode opCode) {
+    int curr_lane = 1;
+
     // "42" at the start of the message means there's a websocket message event.
     // The 4 signifies a websocket message
     // The 2 signifies a websocket event
@@ -68,7 +78,7 @@ int main() {
         
         if (event == "telemetry") {
           // j[1] is the data JSON object
-          
+
           // Main car's localization Data
           double car_x = j[1]["x"];
           double car_y = j[1]["y"];
@@ -80,24 +90,37 @@ int main() {
           // Previous path data given to the Planner
           auto previous_path_x = j[1]["previous_path_x"];
           auto previous_path_y = j[1]["previous_path_y"];
-          // Previous path's end s and d values 
+
+          // Previous path's end s and d values
           double end_path_s = j[1]["end_path_s"];
           double end_path_d = j[1]["end_path_d"];
 
-          // Sensor Fusion Data, a list of all other cars on the same side 
+          // Sensor Fusion Data, a list of all other cars on the same side
           //   of the road.
           auto sensor_fusion = j[1]["sensor_fusion"];
 
+          int prev_size = previous_path_x.size();
+
+          // update measurement
+          planner.update_position(car_x, car_y, car_s, car_d, car_yaw, car_speed);
+          planner.update_prev_position(previous_path_x, previous_path_y, end_path_s, end_path_d);
+
+          // update perception
+          map<int, vector<double>> sensor_fusion_map;
+          for (int i = 0; i < sensor_fusion.size(); i++) {
+            sensor_fusion_map.insert({
+              sensor_fusion[i][0],
+              {sensor_fusion[1], sensor_fusion[2], sensor_fusion[3], sensor_fusion[4], sensor_fusion[5], sensor_fusion[6]}
+            });
+          }
+          planner.sensor_fusion = sensor_fusion_map;
+
           json msgJson;
 
-          vector<double> next_x_vals;
-          vector<double> next_y_vals;
-
-          /**
-           * TODO: define a path made up of (x,y) points that the car will visit
-           *   sequentially every .02 seconds
-           */
-
+          // now update path
+          vector<vector<double>> trajectory = planner.generate_trajectory(map_waypoints_s, map_waypoints_x, map_waypoints_y);
+          vector<double> next_x_vals = trajectory[0];
+          vector<double> next_y_vals = trajectory[1];
 
           msgJson["next_x"] = next_x_vals;
           msgJson["next_y"] = next_y_vals;

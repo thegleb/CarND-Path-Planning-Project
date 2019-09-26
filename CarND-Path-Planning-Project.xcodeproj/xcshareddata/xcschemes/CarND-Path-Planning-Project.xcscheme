@@ -44,6 +44,12 @@
          runnableDebuggingMode = "0"
          FilePath = "/Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/build/path_planning">
       </PathRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = ""
+            isEnabled = "NO">
+         </CommandLineArgument>
+      </CommandLineArguments>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

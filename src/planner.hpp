@@ -12,6 +12,11 @@
 #include <vector>
 #include <map>
 #include <stdio.h>
+#include <math.h>
+
+#include "helpers.h"
+#include "spline.h"
+#include "vehicle.hpp"
 
 // in mph
 #define TARGET_VEL 49.5f
@@ -35,7 +40,14 @@ public:
                                                       vector<double> map_waypoints_x,
                                                       vector<double> map_waypoints_y,
                                                       float velocity);
+  void update_position(double car_x, double car_y, double car_s, double car_d, double car_yaw, double car_speed);
+
+  void update_prev_position(vector<double> previous_path_x, vector<double> previous_path_y, double end_path_s, double end_path_d);
+
+  
   map<int, vector<double>> sensor_fusion;
+  
+  Vehicle ego;
 };
 
 #endif /* planner_hpp */
