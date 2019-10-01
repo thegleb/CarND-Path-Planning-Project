@@ -64,7 +64,7 @@ float valid_lane(const Plan &candidate, const map<int, Plan> &predictions, Vehic
 
 // Calculates a cost for merging when there's a car nearby
 float dont_merge_when_car_nearby(const Plan &candidate, const map<int, Plan> &predictions, Vehicle &ego) {
-  float min_distance = 30;
+  float min_distance = 25;
   if (candidate.state.compare("KL") != 0) {
     for (map<int, Plan>::const_iterator it = predictions.begin();
          it != predictions.end(); ++it) {
@@ -117,14 +117,14 @@ float calculate_cost(const Plan &candidate, const map<int, Plan> &predictions, V
     dont_merge_when_car_nearby
   };
   vector<float> weight_list = {1000, 3000, 1000000, 10000, 100000};
-  
-  printf("%s:\n", candidate.state.c_str());
-  printf("weight: maximize_speed: %f\n", cf_list[0](candidate, predictions, ego));
-  printf("weight: choose_fast_lane: %f\n", cf_list[1](candidate, predictions, ego));
-  printf("weight: valid_lane: %f\n", cf_list[2](candidate, predictions, ego));
-  printf("weight: dont_cut_off_faster_cars: %f\n", cf_list[3](candidate, predictions, ego));
-  printf("weight: dont_merge_when_car_nearby: %f\n", cf_list[4](candidate, predictions, ego));
-  printf("\n");
+
+//  printf("%s:\n", candidate.state.c_str());
+//  printf("weight: maximize_speed: %f\n", cf_list[0](candidate, predictions, ego));
+//  printf("weight: choose_fast_lane: %f\n", cf_list[1](candidate, predictions, ego));
+//  printf("weight: valid_lane: %f\n", cf_list[2](candidate, predictions, ego));
+//  printf("weight: dont_cut_off_faster_cars: %f\n", cf_list[3](candidate, predictions, ego));
+//  printf("weight: dont_merge_when_car_nearby: %f\n", cf_list[4](candidate, predictions, ego));
+//  printf("\n");
 
   for (int i = 0; i < cf_list.size(); ++i) {
     cost += weight_list[i] * cf_list[i](candidate, predictions, ego);
@@ -201,11 +201,11 @@ vector<vector<double>> Planner::generate_trajectory_for_lane(int current_lane, i
   // To minimize jerk, through a bunch of experimentation (I did not feel like doing the formal math for it)
   // I determined that picking 3 points 40, 80, and 120 meters away yields smooth lane changes, but only at
   // lower speeds.
-  // Thus here I am ensuring that at minimum we use the same 40, 80, 120 offsets for slower speeds (below 30 mph)
-  // and 45, 90, 135 (and more) for faster speeds.
-  int increment = current_v > 30 ? current_v * 1.5 : 40;
-  for (int i = increment; i <= increment * 3; i+= increment) {
-    target_waypoints.push_back(getXY(ego.s + i, (2 + 4 * (current_lane + i / (increment * 3) * delta_lane)), map_waypoints_s, map_waypoints_x, map_waypoints_y));
+  // Thus here I am ensuring that at minimum we use the same 24, 48, 72, 96, 120 offsets
+  // for slower speeds (below 30 mph) and 45, 90, 135 (and more) for faster speeds.
+  int increment = round(current_v > 30 ? current_v * 1.25 : 30);
+  for (int i = increment; i <= increment * 5; i+= increment) {
+    target_waypoints.push_back(getXY(ego.s + i, (2 + 4 * (current_lane + i / (increment * 5) * delta_lane)), map_waypoints_s, map_waypoints_x, map_waypoints_y));
   }
   vector<double> next_x_vals;
   vector<double> next_y_vals;
@@ -470,11 +470,11 @@ bool Planner::get_vehicle_ahead(map<int, Plan> &predictions, int lane, Plan &veh
         ) {
 //      printf("vehicle ahead:%f speed: %f\n", temp_vehicle.s - ego.s, temp_vehicle.v);
 
-//      if (temp_vehicle.v < ego.speed) {
-      min_distance = temp_vehicle.s - ego.s;
-      vehicle_ahead = temp_vehicle;
-      found_vehicle = true;
-//      }
+      if (temp_vehicle.v < ego.v) {
+        min_distance = temp_vehicle.s - ego.s;
+        vehicle_ahead = temp_vehicle;
+        found_vehicle = true;
+      }
     }
   }
   
