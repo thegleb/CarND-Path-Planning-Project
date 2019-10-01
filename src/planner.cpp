@@ -201,11 +201,16 @@ vector<vector<double>> Planner::generate_trajectory_for_lane(int current_lane, i
   // To minimize jerk, through a bunch of experimentation (I did not feel like doing the formal math for it)
   // I determined that picking 3 points 40, 80, and 120 meters away yields smooth lane changes, but only at
   // lower speeds.
-  // Thus here I am ensuring that at minimum we use the same 24, 48, 72, 96, 120 offsets
-  // for slower speeds (below 30 mph) and 45, 90, 135 (and more) for faster speeds.
-  int increment = round(current_v > 30 ? current_v * 1.25 : 30);
-  for (int i = increment; i <= increment * 5; i+= increment) {
-    target_waypoints.push_back(getXY(ego.s + i, (2 + 4 * (current_lane + i / (increment * 5) * delta_lane)), map_waypoints_s, map_waypoints_x, map_waypoints_y));
+  // Thus here I am ensuring that at minimum we use the same 30, 60, 90, 120, 150 offsets
+  // for slower speeds (below 30 mph) and scale it up for higher speeds to maintain smoothness
+  int increment = (int)round(current_v > 30 ? current_v * 1.25 : 30);
+  for (int i = increment; i <= increment * 5; i += increment) {
+    target_waypoints.push_back(getXY(
+            ego.s + (float)i,
+            (2 + 4 * ((float)current_lane + (float)i / ((float)increment * 5) * (float)delta_lane)),
+            map_waypoints_s,
+            map_waypoints_x,
+            map_waypoints_y));
   }
   vector<double> next_x_vals;
   vector<double> next_y_vals;
@@ -401,7 +406,7 @@ void Planner::prediction_for_lane_change(Plan &prediction,
 
   has_vehicle_ahead = get_vehicle_ahead(predictions, new_lane, vehicle_ahead);
   if (has_vehicle_ahead) {
-    target_v = fmin(vehicle_ahead.v, ego.v);
+    target_v = fmin(vehicle_ahead.v, target_v);
   }
 
   prediction.trajectory = generate_trajectory_for_lane(ego.lane, new_lane, ego.v);

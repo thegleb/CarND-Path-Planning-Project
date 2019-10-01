@@ -16,7 +16,69 @@ In this project your goal is to safely navigate around a virtual highway with ot
 
 #### 1. Exploration
 
-I first followed the project FAQ example and wrote similar code to generate a set of next points for the car to follow, along a spline that followed the roadway, with anchor points about 30, 60, and 90 meters in front of the car and an evenly spaced set of x and y coordinates corresponding to the car's current speed (see )
+I first followed the project FAQ example and wrote similar code to generate a set of next points for the car to follow, along a spline that followed the roadway, with anchor points about 30, 60, and 90 meters in front of the car and an evenly spaced set of x and y coordinates with the distance between them corresponding to the car's current speed (see the `generate_trajectory_for_lane` method in `planner.cpp`)
+
+#### 2. State machines
+
+I decided to model the car as a state machine with the following states:
+
+* KL - Keep lane. Common state for a car that remains within its lane.
+* LCL - Lane change left. Used to determine when to initiate a lane change to the left.
+* LCR - Lane change right. Same as above, but for lane changes to the right.
+* LCIP - Lane change in progress. This is used when the car has already initiated a lane change, and this state is kept until the lane change is completed.
+
+I initially created 2 intermediate states between KL and LCL/LCR called PLCL/PLCR (prepare lane change left/right), but I couldn't get the car to behave properly so I simplified the state machine a bit.
+
+#### 3. Basic algorithm
+
+The pattern is pretty simple:
+
+1) Given the car's current state (initialized to KL), determine the next possible states
+2) Create a plan for each state by determining a trajectory as well as a target velocity for each state. The target velocity is basically just "assuming the car is in the target lane, find the nearest other car in front within a certain range and match its speed, else pick the maximum legal velocity"
+3) Using the `sensor_fusion` observations around the car, make predictions about the other cars assuming they're a) moving at constant velocity and b) staying in their own lane
+4) Using a series of cost functions and cost function weights, calculate a cost value for each of the possible plans from (1)
+5) Select the lowest-cost plan by choosing the lowest value from (4)
+6) Update the car's target lane and target velocity using the chosen state from (5) 
+
+The core logic for this is in the `choose_next_plan` method inside `planner.cpp`.
+
+The other important step is also number 7: adjust ego car velocity to match target velocity. For this I use a pretty simple approach - convert the maximum allowed acceleration to mph and either add or subtract `max_a * delta_t`, as illustrated in the `get_updated_speed` method in `planner.cpp`:
+```
+return current_v + mph_from_mps(MAX_A * (delta > 0 ? 1 : -1)) * D_T;
+```
+
+I initially tried to combine trajectory generation with velocity updates, but wasn't able to get it to work, thus I split it into a separate update step combined with the target velocity determined for each possible `Plan`.
+
+#### 4. Cost functions
+
+My cost functions strive to maximize velocity and are not very optimized for nuanced maneuvers:
+
+* `maximize_speed` - The target velocity should be as close to the maximum velocity as possible. If the delta from maximum velocity is larger, the cost is higher.
+* `choose_fast_lane` - If the car's current velocity is lower than the lane velocity (as determined by the velocity of the nearest car in front), then return 0; otherwise the cost increases the slower the lane is compared to the ego vehicle.
+* `valid_lane` - Return a very high cost if the new lane value is outside allowed boundaries. This makes sure the car never tries to change lanes to the right when it is in the right lane, or change to the left from the left lane.
+* `dont_cut_off_faster_cars` - If there is a faster-moving car behind, then increase cost based on the delta of the velocities. 
+* `dont_merge_when_car_nearby` - Increase cost if there is another car within a certain range in front or behind the ego vehicle.
+
+#### 5. Cost function weights
+
+For the most part I wrote the cost functions in a way that each one would return a value from ~0 to ~1 so that it would be easy to assign weights. The one exception is the `dont_cut_off_faster_cars` function where I gave up and left it as a pure velocity delta (which has a max theoretical value of `TARGET_V` of 49.5), at least as of time of writing this.
+
+I chose these weights (listed in order of appearance on the cost function list above): 
+```
+vector<float> weight_list = {1000, 3000, 1000000, 10000, 100000};
+``` 
+
+The most important cost functions that had to override everything were `valid_lane` and `dont_merge_when_car_nearby`. `valid_lane` is self-explanatory, and thehigh value for  `dont_merge_when_car_nearby` came out of frustration when the first bunch of iterations kept knocking other cars off the road (see [one such illustrative example](https://www.youtube.com/watch?v=A3Q9WGUf7rA)).
+
+#### 6. Shortcomings
+
+There are a few shortcomings of this implementation I know of:
+* The planner assumes all the cars around are moving at constant velocity and are not switching lanes. To solve this I'd probably do a combination of tracking velocities over time to determine acceleration as well as running something like a naive Bayes classifier on their velocities to see whether they are potentially changing lanes or not.
+* The trajectory is generated in a fairly naive way, so it doesn't have a good way to guard against extreme jerk/acceleration values that can occur sometimes. I adjusted the numbers in a way that minimizes the occurrence of these, but a better solution would do the legwork of calculating the projected acceleration/jerk values and adjusting the trajectories as needed.
+* Similarly the accelerate/brake functions of the ego car are pretty naive and cannot react quickly enough to cars cutting in front, so there is a risk of collision in this case. Luckily this doesn't seem to happen too often in the simulator.
+* There is a small bug where the car cannot stop, because if it does, then the code crashes because 2 points with the same `x` coordinate (of 0) are fed to the spline generator, and an assertion fails crashing the planner.
+
+There are probably some others, but these are off the top of my head as I wrote the code. 
 
 #### The map of the highway is in data/highway_map.txt
 Each waypoint in the list contains `[x, y, s, dx, dy]` values. `x` and `y` are the waypoint's map coordinate position, the `s` value is the distance along the road to get to that waypoint in meters, the `dx` and `dy` values define the unit normal vector pointing outward of the highway loop.
