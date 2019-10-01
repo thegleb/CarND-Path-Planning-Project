@@ -64,7 +64,7 @@ float valid_lane(const Plan &candidate, const map<int, Plan> &predictions, Vehic
 
 // Calculates a cost for merging when there's a car nearby
 float dont_merge_when_car_nearby(const Plan &candidate, const map<int, Plan> &predictions, Vehicle &ego) {
-  float min_distance = 25;
+  float min_distance = 30;
   if (candidate.state.compare("KL") != 0) {
     for (map<int, Plan>::const_iterator it = predictions.begin();
          it != predictions.end(); ++it) {
@@ -439,23 +439,6 @@ void Planner::predict_ego(string state, Plan &candidate, map<int, Plan> &predict
 }
 
 
-// Returns true if a faster vehicle is found behind the current vehicle
-bool Planner::get_vehicle_behind(map<int, Plan> &predictions, int lane, Plan &vehicle_behind) {
-  int min_distance = MIN_DETECTED_DISTANCE;
-  bool found_vehicle = false;
-  Plan temp_vehicle;
-  for (map<int, Plan>::iterator it = predictions.begin(); it != predictions.end(); ++it) {
-    temp_vehicle = it->second;
-    if (temp_vehicle.lane == ego.lane && temp_vehicle.s < ego.s && (ego.s - temp_vehicle.s) < min_distance && temp_vehicle.v > ego.v) {
-      min_distance = temp_vehicle.s;
-      vehicle_behind = temp_vehicle;
-      found_vehicle = true;
-    }
-  }
-  
-  return found_vehicle;
-}
-
 // Returns true if a slower vehicle is found ahead off the current vehicle
 bool Planner::get_vehicle_ahead(map<int, Plan> &predictions, int lane, Plan &vehicle_ahead) {
   // Returns true if a slower vehicle is found ahead of the current vehicle
@@ -470,11 +453,29 @@ bool Planner::get_vehicle_ahead(map<int, Plan> &predictions, int lane, Plan &veh
         ) {
 //      printf("vehicle ahead:%f speed: %f\n", temp_vehicle.s - ego.s, temp_vehicle.v);
 
-      if (temp_vehicle.v < ego.v) {
-        min_distance = temp_vehicle.s - ego.s;
-        vehicle_ahead = temp_vehicle;
-        found_vehicle = true;
-      }
+//      if (temp_vehicle.v < ego.v) {
+      min_distance = temp_vehicle.s - ego.s;
+      vehicle_ahead = temp_vehicle;
+      found_vehicle = true;
+//      }
+    }
+  }
+  
+  return found_vehicle;
+}
+
+
+// Returns true if a faster vehicle is found behind the current vehicle
+bool Planner::get_vehicle_behind(map<int, Plan> &predictions, int lane, Plan &vehicle_behind) {
+  int min_distance = MIN_DETECTED_DISTANCE;
+  bool found_vehicle = false;
+  Plan temp_vehicle;
+  for (map<int, Plan>::iterator it = predictions.begin(); it != predictions.end(); ++it) {
+    temp_vehicle = it->second;
+    if (temp_vehicle.lane == ego.lane && temp_vehicle.s < ego.s && (ego.s - temp_vehicle.s) < min_distance && temp_vehicle.v > ego.v) {
+      min_distance = temp_vehicle.s;
+      vehicle_behind = temp_vehicle;
+      found_vehicle = true;
     }
   }
   

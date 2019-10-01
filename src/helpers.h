@@ -10,10 +10,10 @@ using std::string;
 using std::vector;
 
 // in mph
-#define TARGET_V 49.5f
+#define TARGET_V 49.0f
 #define MAX_PATH_POINTS 50
 #define D_T 0.02f
-#define MAX_A 10.0f // m/sec^2
+#define MAX_A 12.0f // m/sec^2-ish
 
 // Checks if the SocketIO event has JSON data.
 // If there is data the JSON object in string format will be returned,
