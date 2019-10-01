@@ -13,6 +13,7 @@
 #include <map>
 #include <cmath>
 #include <cstdio>
+#include <functional>
 
 #include "helpers.h"
 #include "spline.h"
