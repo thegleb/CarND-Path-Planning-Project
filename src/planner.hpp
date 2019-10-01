@@ -11,9 +11,8 @@
 
 #include <vector>
 #include <map>
-#include <stdio.h>
-#include <math.h>
-#include <stdio.h>
+#include <cmath>
+#include <cstdio>
 
 #include "helpers.h"
 #include "spline.h"
@@ -30,10 +29,9 @@ public:
   virtual ~Planner();
   
   void predict_ego(string state, Plan &candidate, map<int, Plan> &predictions);
-  void predict_other_cars(map<int, vector<double>> sensor_fusion, map<int, Plan> &predictions, int num_steps);
+  static void predict_other_cars(map<int, vector<double>> sensor_fusion, map<int, Plan> &predictions, int num_steps);
 
   vector<vector<double>> generate_trajectory_for_lane(int lane, int new_lane, double current_speed);
-  vector<vector<double>> generate_trajectory_for_lane_change(string state);
 
   void prediction_for_lane_keep(Plan &prediction, string state, double s, map<int, Plan> &predictions, int lane, double current_v);
   void prediction_for_lane_change(Plan &prediction, string state, double s, map<int, Plan> &predictions);
@@ -45,7 +43,7 @@ public:
   bool get_vehicle_ahead(map<int, Plan> &predictions, int lane, Plan &vehicle_ahead);
 
   Plan choose_next_plan();
-  double adjust_speed(double current_v, double target_v);
+  static double get_updated_speed(double current_v, double target_v);
 
   map<int, vector<double>> sensor_fusion;
   vector<double> map_waypoints_x;

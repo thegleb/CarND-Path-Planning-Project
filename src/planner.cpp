@@ -11,8 +11,8 @@
 Planner::Planner() {}
 Planner::~Planner() {}
 
-#define MIN_DETECTED_DISTANCE 50
-#define MIN_FOLLOWING_DISTANCE 40
+#define MIN_DETECTED_DISTANCE 50.0f
+#define MIN_FOLLOWING_DISTANCE 40.0f
 
 // Calculate the lane speed for a plan
 float lane_speed(Plan candidate, const map<int, Plan> &predictions, Vehicle &ego) {
@@ -65,7 +65,7 @@ float valid_lane(const Plan &candidate, const map<int, Plan> &predictions, Vehic
 // Calculates a cost for merging when there's a car nearby
 float dont_merge_when_car_nearby(const Plan &candidate, const map<int, Plan> &predictions, Vehicle &ego) {
   float min_distance = 30;
-  if (candidate.state.compare("KL") != 0) {
+  if (candidate.state != "KL") {
     for (map<int, Plan>::const_iterator it = predictions.begin();
          it != predictions.end(); ++it) {
       int key = it->first;
@@ -85,7 +85,7 @@ float dont_merge_when_car_nearby(const Plan &candidate, const map<int, Plan> &pr
 float dont_cut_off_faster_cars(const Plan &candidate, const map<int, Plan> &predictions, Vehicle &ego) {
   float max_speed_behind = ego.v;
   float min_distance = MIN_DETECTED_DISTANCE;
-  if (candidate.state.compare("KL") != 0) {
+  if (candidate.state != "KL") {
     for (map<int, Plan>::const_iterator it = predictions.begin();
          it != predictions.end(); ++it) {
       int key = it->first;
@@ -106,7 +106,7 @@ float dont_cut_off_faster_cars(const Plan &candidate, const map<int, Plan> &pred
 // Sum weighted cost functions to get total cost for plan.
 float calculate_cost(const Plan &candidate, const map<int, Plan> &predictions, Vehicle &ego) {
   float cost = 0.0;
-  
+
   vector<std::function<float(const Plan &,
                              const map<int, Plan> &,
                              Vehicle &ego)>> cf_list = {
@@ -129,7 +129,7 @@ float calculate_cost(const Plan &candidate, const map<int, Plan> &predictions, V
   for (int i = 0; i < cf_list.size(); ++i) {
     cost += weight_list[i] * cf_list[i](candidate, predictions, ego);
   }
-  
+
   return cost;
 }
 
@@ -142,7 +142,7 @@ Plan Planner::choose_next_plan() {
   vector<Plan> candidates;
 
   // Update car speed based on the target speed and current speed
-  ego.v = adjust_speed(ego.v, ego.target_v);
+  ego.v = get_updated_speed(ego.v, ego.target_v);
 
   // We predict the locations of cars 70 time steps into the future.
   // This specific number was chosen because we generate trajectories roughly 30 meters in front,
@@ -153,7 +153,7 @@ Plan Planner::choose_next_plan() {
 
   // 1. Determine what possible states the car can have given its current state
   vector<string> states = ego.next_states();
-  
+
   // 2. Iterate over the states
   for (int i = 0; i < states.size(); i++) {
     string state = states[i];
@@ -166,7 +166,7 @@ Plan Planner::choose_next_plan() {
   }
 
   // 5. Find minimum cost prediction
-  float min_cost = 10000000000;
+  float min_cost = 10000000000.0f;
   int min_cost_idx = 0;
   for (int i = 0; i < costs.size(); i++) {
 //    printf("%s: %f\n", candidates[i].state.c_str(), costs[i]);
@@ -235,14 +235,14 @@ vector<vector<double>> Planner::generate_trajectory_for_lane(int current_lane, i
     double ref_x_prev = ego.previous_path_x[prev_size - 2];
     double ref_y_prev = ego.previous_path_y[prev_size - 2];
     ref_yaw = atan2(ref_y - ref_y_prev, ref_x - ref_x_prev);
-    
+
     pts_x.push_back(ref_x_prev);
     pts_x.push_back(ref_x);
-    
+
     pts_y.push_back(ref_y_prev);
     pts_y.push_back(ref_y);
   }
-  
+
   for (int i = 0; i < ego.previous_path_x.size(); i++) {
     next_x_vals.push_back(ego.previous_path_x[i]);
     next_y_vals.push_back(ego.previous_path_y[i]);
@@ -258,7 +258,7 @@ vector<vector<double>> Planner::generate_trajectory_for_lane(int current_lane, i
   for (int i = 0; i < pts_x.size(); i++) {
     double shift_x = pts_x[i] - ref_x;
     double shift_y = pts_y[i] - ref_y;
-    
+
     pts_x[i] = (shift_x * cos(0 - ref_yaw) - shift_y * sin(0 - ref_yaw));
     pts_y[i] = (shift_x * sin(0 - ref_yaw) + shift_y * cos(0 - ref_yaw));
   }
@@ -282,34 +282,21 @@ vector<vector<double>> Planner::generate_trajectory_for_lane(int current_lane, i
     double x_point = x_add_on + target_x / N;
     double y_point = spline_fn(x_point);
     x_add_on = x_point;
-    
+
     double x_ref = x_point;
     double y_ref = y_point;
-    
+
     // Convert back to global coordinates
     x_point = (x_ref * cos(ref_yaw) - y_ref * sin(ref_yaw));
     y_point = (x_ref * sin(ref_yaw) + y_ref * cos(ref_yaw));
 
     x_point += ref_x;
     y_point += ref_y;
-    
+
     next_x_vals.push_back(x_point);
     next_y_vals.push_back(y_point);
   }
   return {next_x_vals, next_y_vals, {target_dist}};
-}
-
-// We use the same method to generate a trajectory for lane changes as for staying within
-// a lane, except the actual lane changes. The trajectory generator takes the lane into account
-// when computing a new `d` value.
-vector<vector<double>> Planner::generate_trajectory_for_lane_change(string state) {
-  vector<vector<double>> trajectory;
-  if (state.compare("LCL")) {
-    trajectory = generate_trajectory_for_lane(ego.lane, ego.lane + 1, ego.v);
-  } else if (state.compare("LCR")) {
-    trajectory = generate_trajectory_for_lane(ego.lane, ego.lane - 1, ego.v);
-  }
-  return trajectory;
 }
 
 // Just a convenient wrapper to avoid having to use 6 statements to update these values
@@ -341,9 +328,9 @@ void Planner::update_prev_position(vector<double> new_previous_path_x,
 // Basically used independent of cost functions, ensuring that the car always accelerates or slows down
 // depending on the target velocity. The target velocity is determined by the plan, e.g. when approaching
 // a car ahead of the ego car, then the target velocity is updated to match the car in front.
-double Planner::adjust_speed(double current_v, double target_v) {
+double Planner::get_updated_speed(double current_v, double target_v) {
 //  printf("target: %f\n", target_v);
-  float delta = (target_v - current_v);
+  double delta = (target_v - current_v);
   if (abs(delta) > 0) {
     return current_v + mph_from_mps(MAX_A * (delta > 0 ? 1 : -1)) * D_T;
   } else {
@@ -362,10 +349,10 @@ void Planner::predict_other_cars(map<int, vector<double>> sensor_fusion, map<int
     float d = measurement[5];
     float v_x = measurement[2];
     float v_y = measurement[3];
-    
+
     float v = sqrt(pow(v_x, 2) + pow(v_y, 2));
     float next_s = position_at(s, v, 0, num_steps * D_T);
-      
+
     predictions.insert({it->first, Plan(next_s, d, mph_from_mps(v), "KL")});
   }
 }
@@ -384,7 +371,7 @@ void Planner::prediction_for_lane_keep(Plan &prediction,
     // Keep speed of current lane so as not to collide with car in front
     target_v = fmin(vehicle_ahead.v, target_v) - 1;
   }
-  
+
   vector<vector<double>> trajectory = generate_trajectory_for_lane(lane, lane, current_v);
   prediction.trajectory = trajectory;
   prediction.v = target_v;
@@ -401,10 +388,10 @@ void Planner::prediction_for_lane_change(Plan &prediction,
                                          double s,
                                          map<int, Plan> &predictions) {
   int new_lane = ego.lane;
-  if (state.compare("LCL")) {
-    new_lane += 1;
-  } else if (state.compare("LCR")) {
+  if (state == "LCL") {
     new_lane -= 1;
+  } else if (state == "LCR") {
+    new_lane += 1;
   }
 
   Plan vehicle_behind;
@@ -428,12 +415,12 @@ void Planner::prediction_for_lane_change(Plan &prediction,
 // Given a possible next state, generate the appropriate trajectory to realize the next state.
 void Planner::predict_ego(string state, Plan &candidate, map<int, Plan> &predictions) {
 //  printf("eval:%s, lane:%i v:%f\n", state.c_str(), ego.lane, ego.speed);
-  if (state.compare("KL") == 0) {
+  if (state == "KL") {
     prediction_for_lane_keep(candidate, state, ego.s, predictions, ego.lane, ego.v);
-  } else if (state.compare("LCIP") == 0) {
+  } else if (state == "LCIP") {
     // This is the "lane change in progress" state
     prediction_for_lane_keep(candidate, state, ego.s, predictions, ego.target_lane, ego.v);
-  } else if (state.compare("LCL") == 0 || state.compare("LCR") == 0) {
+  } else if (state == "LCL" || state == "LCR") {
     prediction_for_lane_change(candidate, state, ego.s, predictions);
   }
 }
@@ -442,7 +429,7 @@ void Planner::predict_ego(string state, Plan &candidate, map<int, Plan> &predict
 // Returns true if a slower vehicle is found ahead off the current vehicle
 bool Planner::get_vehicle_ahead(map<int, Plan> &predictions, int lane, Plan &vehicle_ahead) {
   // Returns true if a slower vehicle is found ahead of the current vehicle
-  int min_distance = MIN_DETECTED_DISTANCE;
+  float min_distance = MIN_DETECTED_DISTANCE;
   bool found_vehicle = false;
   Plan temp_vehicle;
   for (map<int, Plan>::iterator it = predictions.begin(); it != predictions.end(); ++it) {
@@ -460,14 +447,14 @@ bool Planner::get_vehicle_ahead(map<int, Plan> &predictions, int lane, Plan &veh
 //      }
     }
   }
-  
+
   return found_vehicle;
 }
 
 
 // Returns true if a faster vehicle is found behind the current vehicle
 bool Planner::get_vehicle_behind(map<int, Plan> &predictions, int lane, Plan &vehicle_behind) {
-  int min_distance = MIN_DETECTED_DISTANCE;
+  float min_distance = MIN_DETECTED_DISTANCE;
   bool found_vehicle = false;
   Plan temp_vehicle;
   for (map<int, Plan>::iterator it = predictions.begin(); it != predictions.end(); ++it) {
@@ -478,6 +465,6 @@ bool Planner::get_vehicle_behind(map<int, Plan> &predictions, int lane, Plan &ve
       found_vehicle = true;
     }
   }
-  
+
   return found_vehicle;
 }

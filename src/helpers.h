@@ -1,7 +1,7 @@
 #ifndef HELPERS_H
 #define HELPERS_H
 
-#include <math.h>
+#include <cmath>
 #include <string>
 #include <vector>
 
@@ -13,7 +13,7 @@ using std::vector;
 #define TARGET_V 49.0f
 #define MAX_PATH_POINTS 50
 #define D_T 0.02f
-#define MAX_A 12.0f // m/sec^2-ish
+#define MAX_A 8.0f // m/sec^2-ish
 
 // Checks if the SocketIO event has JSON data.
 // If there is data the JSON object in string format will be returned,

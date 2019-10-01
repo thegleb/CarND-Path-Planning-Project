@@ -17,35 +17,34 @@ Vehicle::~Vehicle() {}
 
 vector<string> Vehicle::next_states() {
   vector<string> states;
-  string state = this->state;
-  
+
   // "lane change left/right" -> "lane change in progress"
-  if (state.compare("LCR") == 0 || state.compare("LCL") == 0) {
-    states.push_back("LCIP");
+  if (state == "LCR" || state == "LCL") {
+    states.emplace_back("LCIP");
     return states;
   }
   
   // "lane change in progress" and lane change is not completed, keep that state
-  if (state.compare("LCIP") == 0) {
+  if (state == "LCIP") {
     if (abs(this->d - (target_lane * 4 + 2)) > 0.1) {
-      states.push_back("LCIP");
+      states.emplace_back("LCIP");
       return states;
     }
   }
 
-  states.push_back("KL");
-  if(state.compare("KL") == 0) {
+  states.emplace_back("KL");
+  if (state == "KL") {
 //    states.push_back("PLCL");
 //    states.push_back("PLCR");
 //  } else if (state.compare("PLCL") == 0) {
     if (lane != 2) {
 //      states.push_back("PLCL");
-      states.push_back("LCR");
+      states.emplace_back("LCR");
     }
 //  } else if (state.compare("PLCR") == 0) {
     if (lane != 0) {
 //      states.push_back("PLCR");
-      states.push_back("LCL");
+      states.emplace_back("LCL");
     }
 //  }
   }
