@@ -38,8 +38,8 @@ public:
   float s;
   float a;
   float yaw;
-  float speed;
-  float target_speed;
+  float v;
+  float target_v;
   int lane;
   int target_lane;
   double d;

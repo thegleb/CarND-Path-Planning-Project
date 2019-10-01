@@ -100,11 +100,11 @@ int main() {
           //   of the road.
           auto sensor_fusion = j[1]["sensor_fusion"];
 
-          // update measurement
+          // 1. update measurement
           planner.update_position(car_x, car_y, car_s, car_d, car_yaw);
           planner.update_prev_position(previous_path_x, previous_path_y, end_path_s, end_path_d);
 
-          // update perception
+          // 2. update perception
           map<int, vector<double>> sensor_fusion_map;
           for (int i = 0; i < sensor_fusion.size(); i++) {
             double s = fmod(sensor_fusion[i][5], max_s);
@@ -118,15 +118,9 @@ int main() {
           planner.sensor_fusion = sensor_fusion_map;
 
           json msgJson;
-//
-//          if (planner.ego.speed < TARGET_V - 3) {
-//            planner.ego.speed += 2.5;
-//          } else {
-//            planner.ego.speed -= 0.1;
-//          }
 
-          // now update path
-          Prediction candidate = planner.choose_next_state();
+          // 3. find the best plan
+          Plan candidate = planner.choose_next_plan();
           vector<double> next_x_vals = candidate.trajectory[0];
           vector<double> next_y_vals = candidate.trajectory[1];
 

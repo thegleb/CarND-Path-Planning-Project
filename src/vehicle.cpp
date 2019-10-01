@@ -10,7 +10,7 @@
 
 Vehicle::Vehicle() {
   state = "KL";
-  target_speed = TARGET_V;
+  target_v = TARGET_V;
 }
 Vehicle::~Vehicle() {}
 

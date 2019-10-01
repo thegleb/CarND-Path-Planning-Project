@@ -1,17 +1,17 @@
 //
-//  prediction.cpp
+//  plan.cpp
 //  CarND-Path-Planning-Project
 //
 //  Created by Gleb on 9/26/19.
 //  Copyright © 2019 Gleb. All rights reserved.
 //
 
-#include "prediction.hpp"
+#include "plan.hpp"
 
-Prediction::Prediction() {}
-Prediction::~Prediction() {}
+Plan::Plan() {}
+Plan::~Plan() {}
 
-Prediction::Prediction(double s, double d, double v, string state) {
+Plan::Plan(double s, double d, double v, string state) {
   this->state = state;
   this->s = s;
   this->d = d;

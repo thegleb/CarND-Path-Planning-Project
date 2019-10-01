@@ -18,13 +18,13 @@
 using std::string;
 using std::vector;
 
-class Prediction {
+class Plan {
 public:
   // Constructors
-  Prediction();
-  virtual ~Prediction();
+  Plan();
+  virtual ~Plan();
   
-  Prediction(double s, double d, double v, string state);
+  Plan(double s, double d, double v, string state);
 
   double s;
   double d;
