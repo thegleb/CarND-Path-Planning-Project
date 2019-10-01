@@ -890,8 +890,14 @@ vector
 algorithm
 -
 
+/Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/vehicle.cpp
+vehicle.hpp
+/Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/vehicle.hpp
+
 /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/vehicle.hpp
 stdio.h
+-
+math.h
 -
 map
 -
@@ -899,4 +905,6 @@ string
 -
 vector
 -
+helpers.h
+/Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/helpers.h
 

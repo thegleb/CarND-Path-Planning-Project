@@ -172,6 +172,7 @@ CMakeFiles/path_planning.dir/src/planner.cpp.o: ../src/planner.hpp
 CMakeFiles/path_planning.dir/src/planner.cpp.o: ../src/spline.h
 CMakeFiles/path_planning.dir/src/planner.cpp.o: ../src/vehicle.hpp
 
+CMakeFiles/path_planning.dir/src/vehicle.cpp.o: ../src/helpers.h
 CMakeFiles/path_planning.dir/src/vehicle.cpp.o: ../src/vehicle.cpp
 CMakeFiles/path_planning.dir/src/vehicle.cpp.o: ../src/vehicle.hpp
 

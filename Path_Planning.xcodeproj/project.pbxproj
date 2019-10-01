@@ -9,22 +9,22 @@
 /* Begin PBXAggregateTarget section */
 		7F51E9A62B964487BCF9E19E /* ALL_BUILD */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 33EBFF9CAB3244AC9F108520 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
+			buildConfigurationList = 41F8E49F2AB74DD484ADDA47 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
 			buildPhases = (
-				9631D0E8B5C0468E8C4D2372 /* CMake Rules */,
+				3DB9A6B2157F48709DE9E25A /* CMake Rules */,
 			);
 			dependencies = (
-				B902F58A7D594A8D993460A7 /* PBXTargetDependency */,
-				07AB2003531541E5993C90AE /* PBXTargetDependency */,
+				2FA0F8A0F06F4E749564C1EE /* PBXTargetDependency */,
+				3CBF9B451A8D4A5298D2F157 /* PBXTargetDependency */,
 			);
 			name = ALL_BUILD;
 			productName = ALL_BUILD;
 		};
 		A4A415CDBA864DB18FBEECAD /* ZERO_CHECK */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = B2F8FB8E84004A1AA2D1A41C /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
+			buildConfigurationList = 395B746CC79C49ACA3BE3928 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
 			buildPhases = (
-				06C3C4295F1446BB9FB7A133 /* CMake Rules */,
+				6BA6BA87CB414C8AA2170328 /* CMake Rules */,
 			);
 			dependencies = (
 			);
@@ -34,35 +34,36 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		08A6EB5F831542099FE03A0C /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/vehicle.cpp */ = {isa = PBXBuildFile; fileRef = E81AC38FEE4A4D7FBB0F91EF /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/vehicle.cpp */; };
-		0944C676511946E4A1CD3D09 /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/main.cpp */ = {isa = PBXBuildFile; fileRef = 7118B9D786EA48E38B209104 /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/main.cpp */; };
-		0F6244B723444F90844C8E4E /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/CMakeLists.txt */ = {isa = PBXBuildFile; fileRef = 0A1E35CE6EB74F2A8A64D3D3 /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/CMakeLists.txt */; };
-		4B8A6C02CA8A444D830DB9B3 /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/planner.cpp */ = {isa = PBXBuildFile; fileRef = 04E9257493364FD1B44281AC /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/planner.cpp */; };
+		18B90B0AEB034FEEA07AC565 /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/vehicle.cpp */ = {isa = PBXBuildFile; fileRef = 121C708B89FA442988EC7E7A /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/vehicle.cpp */; };
+		48405C5FCD12407380F6719A /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/main.cpp */ = {isa = PBXBuildFile; fileRef = 28D658B349E049D5949BDD23 /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/main.cpp */; };
+		558295E03AD444079E47B6D7 /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/prediction.cpp */ = {isa = PBXBuildFile; fileRef = 66267B84D585457386A8F2BC /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/prediction.cpp */; };
+		C156531A07CA4535BAE20EFE /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/planner.cpp */ = {isa = PBXBuildFile; fileRef = 83F78D125C0444398C0B38E0 /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/planner.cpp */; };
+		F53B1F4911414163B345437C /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/CMakeLists.txt */ = {isa = PBXBuildFile; fileRef = BCB078B3388546D49A08F976 /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/CMakeLists.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildStyle section */
-		45F1604D0D584856A1DC16C7 /* Debug */ = {
-			isa = PBXBuildStyle;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-			};
-			name = Debug;
-		};
-		7A8E4AD20F354DA3A5555B20 /* RelWithDebInfo */ = {
+		5B3D6208441040FF98275A6C /* RelWithDebInfo */ = {
 			isa = PBXBuildStyle;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 			};
 			name = RelWithDebInfo;
 		};
-		BDCB1925286741A7A77B4430 /* MinSizeRel */ = {
+		A40A7EDC5FB24B91BF41E5C6 /* MinSizeRel */ = {
 			isa = PBXBuildStyle;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 			};
 			name = MinSizeRel;
 		};
-		FBB182747DF448D5BA89C725 /* Release */ = {
+		D610281917594E3B9977564C /* Debug */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Debug;
+		};
+		EBE416B3F6E64267B03DA40B /* Release */ = {
 			isa = PBXBuildStyle;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
@@ -72,21 +73,21 @@
 /* End PBXBuildStyle section */
 
 /* Begin PBXContainerItemProxy section */
-		69E328DF868742E89B09A1E0 /* PBXContainerItemProxy */ = {
+		1EF7E4C2E6864CEDB1510CB1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3B34B7585027422EB6918BBA /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = A4A415CDBA864DB18FBEECAD;
 			remoteInfo = ZERO_CHECK;
 		};
-		8AFA62CB7AC24C86944FA2FE /* PBXContainerItemProxy */ = {
+		701B9A3868184945818CA268 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3B34B7585027422EB6918BBA /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = A4A415CDBA864DB18FBEECAD;
 			remoteInfo = ZERO_CHECK;
 		};
-		B88F3B991719455EA8E6D484 /* PBXContainerItemProxy */ = {
+		A6540FA4E3314BC1B9CDF7BF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3B34B7585027422EB6918BBA /* Project object */;
 			proxyType = 1;
@@ -96,65 +97,67 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		04E9257493364FD1B44281AC /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/planner.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = planner.cpp; path = src/planner.cpp; sourceTree = SOURCE_ROOT; };
-		0A1E35CE6EB74F2A8A64D3D3 /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
-		7118B9D786EA48E38B209104 /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
-		7148C5BE98964F7B89BE0BFB /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
-		B5814B19ECA2416C8CDA2846 /* path_planning */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = path_planning; sourceTree = BUILT_PRODUCTS_DIR; };
-		E81AC38FEE4A4D7FBB0F91EF /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/vehicle.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = vehicle.cpp; path = src/vehicle.cpp; sourceTree = SOURCE_ROOT; };
+		121C708B89FA442988EC7E7A /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/vehicle.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = vehicle.cpp; path = src/vehicle.cpp; sourceTree = SOURCE_ROOT; };
+		28D658B349E049D5949BDD23 /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
+		3B2DCEBA10364964BECF81BA /* path_planning */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = path_planning; sourceTree = BUILT_PRODUCTS_DIR; };
+		66267B84D585457386A8F2BC /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/prediction.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = prediction.cpp; path = src/prediction.cpp; sourceTree = SOURCE_ROOT; };
+		83F78D125C0444398C0B38E0 /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/planner.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = planner.cpp; path = src/planner.cpp; sourceTree = SOURCE_ROOT; };
+		BCB078B3388546D49A08F976 /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		DCB8481871414419BA71578C /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
-		2A6B6BA1ECDF437E94EAEDF6 /* Products */ = {
+		0238DBB17A7548E3957458FC /* Source Files */ = {
 			isa = PBXGroup;
 			children = (
-				B5814B19ECA2416C8CDA2846 /* path_planning */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		2D3CC78B4D6A4B178C6453D5 = {
-			isa = PBXGroup;
-			children = (
-				B219A0FE8A5244EAA8A19915 /* path_planning */,
-				F9A42F83734A42B8AABC8153 /* ALL_BUILD */,
-				2A6B6BA1ECDF437E94EAEDF6 /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		562FD0D0B68147278BB36E07 /* Source Files */ = {
-			isa = PBXGroup;
-			children = (
-				7118B9D786EA48E38B209104 /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/main.cpp */,
-				04E9257493364FD1B44281AC /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/planner.cpp */,
-				E81AC38FEE4A4D7FBB0F91EF /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/vehicle.cpp */,
+				28D658B349E049D5949BDD23 /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/main.cpp */,
+				83F78D125C0444398C0B38E0 /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/planner.cpp */,
+				66267B84D585457386A8F2BC /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/prediction.cpp */,
+				121C708B89FA442988EC7E7A /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/vehicle.cpp */,
 			);
 			name = "Source Files";
 			sourceTree = "<group>";
 		};
-		6789777B3D074AC7BBF2478C /* CMake Rules */ = {
+		2CE0BDED1380494687D631D3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3B2DCEBA10364964BECF81BA /* path_planning */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5545D8C50853466DA7CB10C2 /* CMake Rules */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			name = "CMake Rules";
 			sourceTree = "<group>";
 		};
-		B219A0FE8A5244EAA8A19915 /* path_planning */ = {
+		6418624757CF4B8C9B5ED801 /* path_planning */ = {
 			isa = PBXGroup;
 			children = (
-				562FD0D0B68147278BB36E07 /* Source Files */,
-				0A1E35CE6EB74F2A8A64D3D3 /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/CMakeLists.txt */,
+				0238DBB17A7548E3957458FC /* Source Files */,
+				BCB078B3388546D49A08F976 /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/CMakeLists.txt */,
 			);
 			name = path_planning;
 			sourceTree = "<group>";
 		};
-		F9A42F83734A42B8AABC8153 /* ALL_BUILD */ = {
+		AA577EDE6A6E426B9E1114E0 /* ALL_BUILD */ = {
 			isa = PBXGroup;
 			children = (
-				6789777B3D074AC7BBF2478C /* CMake Rules */,
-				7148C5BE98964F7B89BE0BFB /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/CMakeLists.txt */,
+				5545D8C50853466DA7CB10C2 /* CMake Rules */,
+				DCB8481871414419BA71578C /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/CMakeLists.txt */,
 			);
 			name = ALL_BUILD;
+			sourceTree = "<group>";
+		};
+		BEB341CFE96F4E55826B5BB4 = {
+			isa = PBXGroup;
+			children = (
+				6418624757CF4B8C9B5ED801 /* path_planning */,
+				AA577EDE6A6E426B9E1114E0 /* ALL_BUILD */,
+				2CE0BDED1380494687D631D3 /* Products */,
+			);
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,18 +165,18 @@
 /* Begin PBXNativeTarget section */
 		34B2FF32BF994C75A1DE0427 /* path_planning */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 39EFD6A2067A49359B3C4968 /* Build configuration list for PBXNativeTarget "path_planning" */;
+			buildConfigurationList = 9510B17E73BC446AA3F1D26A /* Build configuration list for PBXNativeTarget "path_planning" */;
 			buildPhases = (
-				3A05DE39A0D64877BB399ED2 /* Sources */,
+				1B2EF4752F5241A1A244C061 /* Sources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				86281EBAF23241B687BEEED8 /* PBXTargetDependency */,
+				4BE04BFCC1244AF0A7A3561D /* PBXTargetDependency */,
 			);
 			name = path_planning;
 			productName = path_planning;
-			productReference = B5814B19ECA2416C8CDA2846 /* path_planning */;
+			productReference = 3B2DCEBA10364964BECF81BA /* path_planning */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -185,18 +188,18 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1100;
 			};
-			buildConfigurationList = BC5015A9FB8F40ABB35B99F4 /* Build configuration list for PBXProject "Path_Planning" */;
+			buildConfigurationList = A1B8512FF0EA492C8706757D /* Build configuration list for PBXProject "Path_Planning" */;
 			buildSettings = {
 			};
 			buildStyles = (
-				45F1604D0D584856A1DC16C7 /* Debug */,
-				FBB182747DF448D5BA89C725 /* Release */,
-				BDCB1925286741A7A77B4430 /* MinSizeRel */,
-				7A8E4AD20F354DA3A5555B20 /* RelWithDebInfo */,
+				D610281917594E3B9977564C /* Debug */,
+				EBE416B3F6E64267B03DA40B /* Release */,
+				A40A7EDC5FB24B91BF41E5C6 /* MinSizeRel */,
+				5B3D6208441040FF98275A6C /* RelWithDebInfo */,
 			);
 			compatibilityVersion = "Xcode 3.2";
 			hasScannedForEncodings = 0;
-			mainGroup = 2D3CC78B4D6A4B178C6453D5;
+			mainGroup = BEB341CFE96F4E55826B5BB4;
 			projectDirPath = .;
 			projectRoot = "";
 			targets = (
@@ -208,7 +211,7 @@
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		06C3C4295F1446BB9FB7A133 /* CMake Rules */ = {
+		3DB9A6B2157F48709DE9E25A /* CMake Rules */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -216,10 +219,10 @@
 			name = "CMake Rules";
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "make -C /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project -f /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/CMakeScripts/ZERO_CHECK_cmakeRulesBuildPhase.make$CONFIGURATION OBJDIR=$(basename \"$OBJECT_FILE_DIR_normal\") all";
+			shellScript = "make -C /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project -f /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/CMakeScripts/ALL_BUILD_cmakeRulesBuildPhase.make$CONFIGURATION OBJDIR=$(basename \"$OBJECT_FILE_DIR_normal\") all";
 			showEnvVarsInLog = 0;
 		};
-		61D0E00A390F436B822702D5 = {
+		6A3E70BFD18B4D91A9C725DA = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -234,7 +237,7 @@
 exit 0";
 			showEnvVarsInLog = 0;
 		};
-		9631D0E8B5C0468E8C4D2372 /* CMake Rules */ = {
+		6BA6BA87CB414C8AA2170328 /* CMake Rules */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -242,10 +245,10 @@ exit 0";
 			name = "CMake Rules";
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "make -C /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project -f /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/CMakeScripts/ALL_BUILD_cmakeRulesBuildPhase.make$CONFIGURATION OBJDIR=$(basename \"$OBJECT_FILE_DIR_normal\") all";
+			shellScript = "make -C /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project -f /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/CMakeScripts/ZERO_CHECK_cmakeRulesBuildPhase.make$CONFIGURATION OBJDIR=$(basename \"$OBJECT_FILE_DIR_normal\") all";
 			showEnvVarsInLog = 0;
 		};
-		9B8E9AF508474C3B907A6776 = {
+		77411D766CCB488D920F6552 = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -263,38 +266,39 @@ exit 0";
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		3A05DE39A0D64877BB399ED2 /* Sources */ = {
+		1B2EF4752F5241A1A244C061 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0944C676511946E4A1CD3D09 /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/main.cpp */,
-				4B8A6C02CA8A444D830DB9B3 /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/planner.cpp */,
-				08A6EB5F831542099FE03A0C /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/vehicle.cpp */,
+				48405C5FCD12407380F6719A /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/main.cpp */,
+				C156531A07CA4535BAE20EFE /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/planner.cpp */,
+				558295E03AD444079E47B6D7 /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/prediction.cpp */,
+				18B90B0AEB034FEEA07AC565 /* /Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/src/vehicle.cpp */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		07AB2003531541E5993C90AE /* PBXTargetDependency */ = {
+		2FA0F8A0F06F4E749564C1EE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A4A415CDBA864DB18FBEECAD /* ZERO_CHECK */;
-			targetProxy = 69E328DF868742E89B09A1E0 /* PBXContainerItemProxy */;
+			targetProxy = 1EF7E4C2E6864CEDB1510CB1 /* PBXContainerItemProxy */;
 		};
-		86281EBAF23241B687BEEED8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A4A415CDBA864DB18FBEECAD /* ZERO_CHECK */;
-			targetProxy = 8AFA62CB7AC24C86944FA2FE /* PBXContainerItemProxy */;
-		};
-		B902F58A7D594A8D993460A7 /* PBXTargetDependency */ = {
+		3CBF9B451A8D4A5298D2F157 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 34B2FF32BF994C75A1DE0427 /* path_planning */;
-			targetProxy = B88F3B991719455EA8E6D484 /* PBXContainerItemProxy */;
+			targetProxy = A6540FA4E3314BC1B9CDF7BF /* PBXContainerItemProxy */;
+		};
+		4BE04BFCC1244AF0A7A3561D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A4A415CDBA864DB18FBEECAD /* ZERO_CHECK */;
+			targetProxy = 701B9A3868184945818CA268 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		0BFD4C61BCE84B3F8D7CE0E1 /* Release */ = {
+		0ADD84E7663541D198C066F1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -320,43 +324,7 @@ exit 0";
 			};
 			name = Release;
 		};
-		10A6192BB6404C96AEA7EEA0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				EXECUTABLE_PREFIX = "";
-				EXECUTABLE_SUFFIX = "";
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = (/usr/local/include,/usr/local/opt/openssl/include);
-				INSTALL_PATH = "";
-				LD_RUNPATH_SEARCH_PATHS = "/usr/local/lib /usr/local/opt/openssl/lib /usr/local/Cellar/libuv/1.20.0/lib";
-				LIBRARY_SEARCH_PATHS = " /usr/local/lib/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME) /usr/local/lib /usr/local/opt/openssl/lib/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME) /usr/local/opt/openssl/lib /usr/local/Cellar/libuv/1.20.0/lib/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME) /usr/local/Cellar/libuv/1.20.0/lib";
-				OTHER_CPLUSPLUSFLAGS = "     -std=c++11";
-				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -lz -lssl -luv -luWS";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = path_planning;
-				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
-			};
-			name = Debug;
-		};
-		27489D43380944CD8C2CCC7B /* RelWithDebInfo */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk;
-				SYMROOT = "/Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/build";
-			};
-			name = RelWithDebInfo;
-		};
-		2E0B9ABBDEB548B39FAF74E9 /* Release */ = {
+		1A82BF6BFD8A499C8CEAE59E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -376,7 +344,7 @@ exit 0";
 			};
 			name = Release;
 		};
-		32141F915D7E4EE7BB002A6A /* MinSizeRel */ = {
+		3AB6758DFE4449F5AF977C90 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -388,37 +356,7 @@ exit 0";
 				INSTALL_PATH = "";
 				OTHER_LDFLAGS = " ";
 				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ALL_BUILD;
-				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
-			};
-			name = MinSizeRel;
-		};
-		49C4457B630B40FF82888A93 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk;
-				SYMROOT = "/Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/build";
-			};
-			name = Debug;
-		};
-		5E630D6205ED466ABCACCD94 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ALL_BUILD;
+				PRODUCT_NAME = ZERO_CHECK;
 				SECTORDER_FLAGS = "";
 				SYMROOT = "/Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project";
 				USE_HEADERMAP = NO;
@@ -426,7 +364,7 @@ exit 0";
 			};
 			name = Debug;
 		};
-		6173AEA0F7724581A08F8CFD /* RelWithDebInfo */ = {
+		50DDE07EA4454BD182265D5F /* RelWithDebInfo */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -446,17 +384,7 @@ exit 0";
 			};
 			name = RelWithDebInfo;
 		};
-		757B83233BF540E68AE15326 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk;
-				SYMROOT = "/Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/build";
-			};
-			name = Release;
-		};
-		7ECE1FCA7A6E4ED9B79EDAE0 /* RelWithDebInfo */ = {
+		640093A7148E484AA8DEB000 /* RelWithDebInfo */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -482,7 +410,27 @@ exit 0";
 			};
 			name = RelWithDebInfo;
 		};
-		8C6521C1697541F6A5317B6F /* Release */ = {
+		6F00F039F61442659D7D6E75 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk;
+				SYMROOT = "/Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/build";
+			};
+			name = Release;
+		};
+		7A7151DAB5AB4149AA8889ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk;
+				SYMROOT = "/Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/build";
+			};
+			name = Debug;
+		};
+		870CCF2205E34BB9AF26D4D3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -502,47 +450,7 @@ exit 0";
 			};
 			name = Release;
 		};
-		8E0FD12D22ED47F694E34473 /* MinSizeRel */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ZERO_CHECK;
-				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
-			};
-			name = MinSizeRel;
-		};
-		A5C8269F253E46E887813C42 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ZERO_CHECK;
-				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
-			};
-			name = Debug;
-		};
-		A9B0195B78BB411DB0493A1B /* MinSizeRel */ = {
+		9E4EF09E20434A01920F96EF /* MinSizeRel */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -568,7 +476,33 @@ exit 0";
 			};
 			name = MinSizeRel;
 		};
-		C99F5C363A6241258C16B279 /* MinSizeRel */ = {
+		A62498146B344E2BBCDA37CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/usr/local/include,/usr/local/opt/openssl/include);
+				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = "/usr/local/lib /usr/local/opt/openssl/lib /usr/local/Cellar/libuv/1.20.0/lib";
+				LIBRARY_SEARCH_PATHS = " /usr/local/lib/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME) /usr/local/lib /usr/local/opt/openssl/lib/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME) /usr/local/opt/openssl/lib /usr/local/Cellar/libuv/1.20.0/lib/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME) /usr/local/Cellar/libuv/1.20.0/lib";
+				OTHER_CPLUSPLUSFLAGS = "     -std=c++11";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -lz -lssl -luv -luWS";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = path_planning;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		AC85A7734DA04B50924A188F /* MinSizeRel */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
@@ -578,7 +512,7 @@ exit 0";
 			};
 			name = MinSizeRel;
 		};
-		D050364DF43D42C29953E33A /* RelWithDebInfo */ = {
+		BDA5AB7BB0764560A2C6E3DE /* RelWithDebInfo */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -598,49 +532,119 @@ exit 0";
 			};
 			name = RelWithDebInfo;
 		};
+		BE194F6ACC274685A3102A91 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		CD00721D1D2A45028D5ADD7D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		EB397C71385543B6A41B79C5 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		EB7299FD843A4D0880751AB3 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk;
+				SYMROOT = "/Users/gleb/dev/Udacity-Self-Driving-Car-Engineer/CarND-Path-Planning-Project/build";
+			};
+			name = RelWithDebInfo;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		33EBFF9CAB3244AC9F108520 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
+		395B746CC79C49ACA3BE3928 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5E630D6205ED466ABCACCD94 /* Debug */,
-				2E0B9ABBDEB548B39FAF74E9 /* Release */,
-				32141F915D7E4EE7BB002A6A /* MinSizeRel */,
-				D050364DF43D42C29953E33A /* RelWithDebInfo */,
+				3AB6758DFE4449F5AF977C90 /* Debug */,
+				870CCF2205E34BB9AF26D4D3 /* Release */,
+				EB397C71385543B6A41B79C5 /* MinSizeRel */,
+				50DDE07EA4454BD182265D5F /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		39EFD6A2067A49359B3C4968 /* Build configuration list for PBXNativeTarget "path_planning" */ = {
+		41F8E49F2AB74DD484ADDA47 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				10A6192BB6404C96AEA7EEA0 /* Debug */,
-				0BFD4C61BCE84B3F8D7CE0E1 /* Release */,
-				A9B0195B78BB411DB0493A1B /* MinSizeRel */,
-				7ECE1FCA7A6E4ED9B79EDAE0 /* RelWithDebInfo */,
+				CD00721D1D2A45028D5ADD7D /* Debug */,
+				1A82BF6BFD8A499C8CEAE59E /* Release */,
+				BE194F6ACC274685A3102A91 /* MinSizeRel */,
+				BDA5AB7BB0764560A2C6E3DE /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		B2F8FB8E84004A1AA2D1A41C /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
+		9510B17E73BC446AA3F1D26A /* Build configuration list for PBXNativeTarget "path_planning" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A5C8269F253E46E887813C42 /* Debug */,
-				8C6521C1697541F6A5317B6F /* Release */,
-				8E0FD12D22ED47F694E34473 /* MinSizeRel */,
-				6173AEA0F7724581A08F8CFD /* RelWithDebInfo */,
+				A62498146B344E2BBCDA37CC /* Debug */,
+				0ADD84E7663541D198C066F1 /* Release */,
+				9E4EF09E20434A01920F96EF /* MinSizeRel */,
+				640093A7148E484AA8DEB000 /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		BC5015A9FB8F40ABB35B99F4 /* Build configuration list for PBXProject "Path_Planning" */ = {
+		A1B8512FF0EA492C8706757D /* Build configuration list for PBXProject "Path_Planning" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				49C4457B630B40FF82888A93 /* Debug */,
-				757B83233BF540E68AE15326 /* Release */,
-				C99F5C363A6241258C16B279 /* MinSizeRel */,
-				27489D43380944CD8C2CCC7B /* RelWithDebInfo */,
+				7A7151DAB5AB4149AA8889ED /* Debug */,
+				6F00F039F61442659D7D6E75 /* Release */,
+				AC85A7734DA04B50924A188F /* MinSizeRel */,
+				EB7299FD843A4D0880751AB3 /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

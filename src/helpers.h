@@ -9,6 +9,12 @@
 using std::string;
 using std::vector;
 
+// in mph
+#define TARGET_V 49.5f
+#define MAX_PATH_POINTS 50
+#define D_T 0.02f
+#define MAX_A 10.0f // m/sec^2
+
 // Checks if the SocketIO event has JSON data.
 // If there is data the JSON object in string format will be returned,
 //   else the empty string "" will be returned.
@@ -151,11 +157,23 @@ inline vector<double> getXY(double s, double d, const vector<double> &maps_s,
   double x = seg_x + d*cos(perp_heading);
   double y = seg_y + d*sin(perp_heading);
 
-  return {x,y};
+  return {x,y,perp_heading};
+}
+
+inline double mph_from_mps(double mps) {
+  return mps * 2.23693629205;
 }
 
 inline double mps_from_mph(double mph) {
   return mph / 2.23693629205;
+}
+
+inline float position_at(double s, double v, double a, float t) {
+  return s + v * t + a * t * t / 2.0;
+}
+
+inline int get_lane_from_d(float d) {
+  return round((d - 2.0) / 4.0);
 }
 
 #endif  // HELPERS_H

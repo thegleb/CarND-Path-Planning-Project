@@ -8,7 +8,7 @@ set(CXX_FLAGS "-Wall")
 set(CMAKE_CXX_FLAGS, "${CXX_FLAGS}")
 set(CMAKE_BUILD_TYPE Debug)
 
-set(sources src/vehicle.cpp src/planner.cpp src/main.cpp)
+set(sources src/prediction.cpp src/vehicle.cpp src/planner.cpp src/main.cpp)
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin") 
 

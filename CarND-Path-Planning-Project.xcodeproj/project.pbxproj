@@ -1671,6 +1671,8 @@
 		F7F56326233C752400394532 /* vehicle.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = vehicle.hpp; sourceTree = "<group>"; };
 		F7F56328233C7AFC00394532 /* spline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spline.h; sourceTree = "<group>"; };
 		F7F56329233C7C8600394532 /* Path_Planning.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Path_Planning.xcodeproj; sourceTree = SOURCE_ROOT; };
+		F7F56333233CB2E000394532 /* prediction.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = prediction.cpp; sourceTree = "<group>"; };
+		F7F56334233CB2E000394532 /* prediction.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = prediction.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -1701,6 +1703,8 @@
 				F7F56321233B35B000394532 /* planner.cpp */,
 				F7F56326233C752400394532 /* vehicle.hpp */,
 				F7F56325233C752400394532 /* vehicle.cpp */,
+				F7F56334233CB2E000394532 /* prediction.hpp */,
+				F7F56333233CB2E000394532 /* prediction.cpp */,
 				F7F55C1F233B314900394532 /* Eigen-3.3 */,
 			);
 			path = src;

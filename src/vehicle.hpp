@@ -10,12 +10,13 @@
 #define vehicle_hpp
 
 #include <stdio.h>
+#include <math.h>
 
 #include <map>
 #include <string>
 #include <vector>
 
-//#include "helpers.h"
+#include "helpers.h"
 
 using std::map;
 using std::string;
@@ -31,9 +32,6 @@ public:
   virtual ~Vehicle();
 
   vector<string> next_states();
-  vector<Vehicle> choose_next_state(map<int, vector<Vehicle>> &predictions);
-
-  map<int, vector<double>> generate_predictions(map<int, vector<double>> sensor_fusion, int num_steps);
 
   double x;
   double y;
@@ -41,7 +39,10 @@ public:
   float a;
   float yaw;
   float speed;
+  float target_speed;
   int lane;
+  int target_lane;
+  double d;
   string state;
   vector<double> previous_path_x;
   vector<double> previous_path_y;

@@ -31,7 +31,7 @@ int main() {
   vector<double> map_waypoints_dy;
 
   // Waypoint map to read from
-  string map_file_ = "../data/highway_map.csv";
+  string map_file_ = "highway_map.csv";
   // The max s value before wrapping around the track back to 0
   double max_s = 6945.554;
 
@@ -57,12 +57,13 @@ int main() {
     map_waypoints_dy.push_back(d_y);
   }
 
-
-  h.onMessage([&map_waypoints_x,&map_waypoints_y,&map_waypoints_s,
-               &map_waypoints_dx,&map_waypoints_dy,&car,&planner]
+  planner.map_waypoints_x = map_waypoints_x;
+  planner.map_waypoints_y = map_waypoints_y;
+  planner.map_waypoints_s = map_waypoints_s;
+  
+  h.onMessage([&map_waypoints_dx,&map_waypoints_dy,&planner,&max_s]
               (uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length,
                uWS::OpCode opCode) {
-    int curr_lane = 1;
 
     // "42" at the start of the message means there's a websocket message event.
     // The 4 signifies a websocket message
@@ -99,28 +100,35 @@ int main() {
           //   of the road.
           auto sensor_fusion = j[1]["sensor_fusion"];
 
-          int prev_size = previous_path_x.size();
-
           // update measurement
-          planner.update_position(car_x, car_y, car_s, car_d, car_yaw, car_speed);
+          planner.update_position(car_x, car_y, car_s, car_d, car_yaw);
           planner.update_prev_position(previous_path_x, previous_path_y, end_path_s, end_path_d);
 
           // update perception
           map<int, vector<double>> sensor_fusion_map;
           for (int i = 0; i < sensor_fusion.size(); i++) {
+            double s = fmod(sensor_fusion[i][5], max_s);
+
+            // id, x, y, v_x, v_y, s, d
             sensor_fusion_map.insert({
               sensor_fusion[i][0],
-              {sensor_fusion[1], sensor_fusion[2], sensor_fusion[3], sensor_fusion[4], sensor_fusion[5], sensor_fusion[6]}
+              {sensor_fusion[i][1], sensor_fusion[i][2], sensor_fusion[i][3], sensor_fusion[i][4], s, sensor_fusion[i][6]}
             });
           }
           planner.sensor_fusion = sensor_fusion_map;
 
           json msgJson;
+//
+//          if (planner.ego.speed < TARGET_V - 3) {
+//            planner.ego.speed += 2.5;
+//          } else {
+//            planner.ego.speed -= 0.1;
+//          }
 
           // now update path
-          vector<vector<double>> trajectory = planner.generate_trajectory(map_waypoints_s, map_waypoints_x, map_waypoints_y);
-          vector<double> next_x_vals = trajectory[0];
-          vector<double> next_y_vals = trajectory[1];
+          Prediction candidate = planner.choose_next_state();
+          vector<double> next_x_vals = candidate.trajectory[0];
+          vector<double> next_y_vals = candidate.trajectory[1];
 
           msgJson["next_x"] = next_x_vals;
           msgJson["next_y"] = next_y_vals;
